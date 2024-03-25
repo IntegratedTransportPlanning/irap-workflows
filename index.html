@@ -18,7 +18,7 @@
             <div class="col-md-6" >
                 <!-- Right column content with large textarea -->
                 <h2>Output</h2>
-                <textarea class="form-control" rows="10"></textarea>
+                <textarea class="form-control" id='csvtext' rows="10">Example header</textarea>
             </div>
         </div>
     </div>
@@ -42,8 +42,22 @@
 
         // Function to handle button click
         function handleButtonClick(buttonText) {
-            alert(`Button "${buttonText}" clicked!`);
-            // You can perform any other action here based on the button text
+            modifyLastLineOfTextarea('csvtext', line => line + ' ' + buttonText)
+        }
+
+        function modifyLastLineOfTextarea(textareaId, modification) {
+            // Get the textarea element by its ID
+            const textarea = document.getElementById(textareaId);
+            // Get the text from the textarea
+            let text = textarea.value;
+            // Split the text into an array of lines
+            let lines = text.split('\n');
+            // Modify the last line
+            lines[lines.length - 1] = modification(lines[lines.length - 1]);
+            // Join the modified lines back into a single string
+            text = lines.join('\n');
+            // Return the modified text
+            return text;
         }
     </script>
     <!-- Include Bootstrap JS (optional, for button interactions) -->
