@@ -20,7 +20,7 @@
                 <h2>Output</h2>
                 <textarea class="form-control" id='csvtext' rows="1000">
                     speed, signage, features
-                    ,,,
+                            ,        ,        ,
                 </textarea>
             </div>
         </div>
@@ -41,6 +41,7 @@
                 ['Small tree',           3, 'SMALLTREE']  // make sure the last line has no comma
             ];
 
+        let row = 0;
         myButtonArray.forEach(buttonText => {
             const button = document.createElement('button');
             button.classList.add('btn', 'btn-primary', 'mr-2'); // Add Bootstrap classes
@@ -51,6 +52,11 @@
             button.addEventListener('click', () => {
                 handleButtonClick(buttonText);
             });
+
+            if ((row % 3) === 0) {
+                buttonContainer.appendChild("<br />");
+            }
+            row += 1;
         });
 
         const button = document.createElement('button');
