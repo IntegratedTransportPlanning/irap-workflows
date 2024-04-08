@@ -13,12 +13,12 @@
             <div class="col-md-6" id='buttonContainer'>
                 <!-- Left column content -->
                 <h2>Controls</h2>
-                <p>click |</p>
+                <p>click ||</p>
             </div>
             <div class="col-md-6" >
                 <!-- Right column content with large textarea -->
                 <h2>Output</h2>
-                <textarea class="form-control" id='csvtext' rows="10">Example header</textarea>
+                <textarea class="form-control" id='csvtext' rows="1000">Example header</textarea>
             </div>
         </div>
     </div>
@@ -38,6 +38,13 @@
             button.addEventListener('click', () => {
                 handleButtonClick(buttonText);
             });
+        });
+
+        const button = document.createElement('button');
+        button.classList.add('btn', 'btn-secondary', 'mr-2'); // Add Bootstrap classes
+        button.textContent = "Next item";
+        button.addEventListener('click', () => {
+            modifyLastLineOfTextarea('csvtext', line => line + ' ' + '\n,,,')
         });
 
         // Function to handle button click
