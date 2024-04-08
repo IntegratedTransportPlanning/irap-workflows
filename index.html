@@ -13,12 +13,15 @@
             <div class="col-md-6" id='buttonContainer'>
                 <!-- Left column content -->
                 <h2>Controls</h2>
-                <p>click ||</p>
+                <p>click |||</p>
             </div>
             <div class="col-md-6" >
                 <!-- Right column content with large textarea -->
                 <h2>Output</h2>
-                <textarea class="form-control" id='csvtext' rows="1000">Example header</textarea>
+                <textarea class="form-control" id='csvtext' rows="1000">
+                    speed, signage, features
+                    ,,,
+                </textarea>
             </div>
         </div>
     </div>
@@ -26,12 +29,22 @@
     
     <script>
         const buttonContainer = document.getElementById('buttonContainer');
-        const myButtonArray = ['Speed', 'signage', 'tree'];
+        const myButtonArray = 
+            [
+                // Button text , column number, item text
+                ['Speed 20',             1, '20'],
+                ['Speed 30',             1, '30'],
+                ['Speed 40',             1, '40'],
+                ['Signage - Directions', 2, 'DIRECTIONS'],
+                ['Signage - Warning',    2, 'WARNING'],
+                ['Big tree',             3, 'BIGTREE'], 
+                ['Small tree',           3, 'SMALLTREE']  // make sure the last line has no comma
+            ];
 
         myButtonArray.forEach(buttonText => {
             const button = document.createElement('button');
             button.classList.add('btn', 'btn-primary', 'mr-2'); // Add Bootstrap classes
-            button.textContent = buttonText;
+            button.textContent = buttonText[0];
             buttonContainer.appendChild(button);
 
             // Add event listener to each button
@@ -51,7 +64,11 @@
         // Function to handle button click
         function handleButtonClick(buttonText) {
             console.log("clicked " + buttonText)
-            modifyLastLineOfTextarea('csvtext', line => line + ' ' + buttonText)
+            modifyLastLineOfTextarea('csvtext', line => {
+                let chunks = line.split(',');
+                chunks[buttonText[1] - 1] = buttonText[2];
+                return chunks.join(',');
+            })
         }
 
         function modifyLastLineOfTextarea(textareaId, modification) {
