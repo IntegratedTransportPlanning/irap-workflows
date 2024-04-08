@@ -13,7 +13,7 @@
             <div class="col-md-6" id='buttonContainer'>
                 <!-- Left column content -->
                 <h2>Controls</h2>
-                <p>click</p>
+                <p>click |</p>
             </div>
             <div class="col-md-6" >
                 <!-- Right column content with large textarea -->
@@ -50,16 +50,20 @@
             console.log("ran modify")
             // Get the textarea element by its ID
             const textarea = document.getElementById(textareaId);
+            console.log("ran modify")
             // Get the text from the textarea
             let text = textarea.value;
+            console.log("ran modify")
             // Split the text into an array of lines
             let lines = text.split('\n');
+            console.log("ran modify")
             // Modify the last line
             lines[lines.length - 1] = modification(lines[lines.length - 1]);
             // Join the modified lines back into a single string
             text = lines.join('\n');
+            console.log("ran modify")
             // Return the modified text
-            return text;
+            textarea.value = text;
         }
     </script>
     <!-- Include Bootstrap JS (optional, for button interactions) -->
