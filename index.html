@@ -41,11 +41,12 @@
         });
 
         const button = document.createElement('button');
-        button.classList.add('btn', 'btn-secondary', 'mr-2'); // Add Bootstrap classes
+        button.classList.add('btn', 'btn-success', 'mr-2'); // Add Bootstrap classes
         button.textContent = "Next item";
         button.addEventListener('click', () => {
             modifyLastLineOfTextarea('csvtext', line => line + ' ' + '\n,,,')
         });
+        buttonContainer.appendChild(button);
 
         // Function to handle button click
         function handleButtonClick(buttonText) {
