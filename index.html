@@ -42,10 +42,12 @@
 
         // Function to handle button click
         function handleButtonClick(buttonText) {
+            console.log("clicked " + buttonText)
             modifyLastLineOfTextarea('csvtext', line => line + ' ' + buttonText)
         }
 
         function modifyLastLineOfTextarea(textareaId, modification) {
+            console.log("ran modify")
             // Get the textarea element by its ID
             const textarea = document.getElementById(textareaId);
             // Get the text from the textarea
